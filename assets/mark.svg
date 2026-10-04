@@ -1,1 +1,27 @@
+<!-- Логотип Бумажной фабрики: рулон туалетной бумаги -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Бумажная фабрика">
+  <!-- Основание-подставка -->
+  <rect x="8" y="46" width="48" height="6" rx="2" fill="#c4a052" opacity="0.85"/>
 
+  <!-- Основной рулон -->
+  <rect x="14" y="14" width="36" height="34" rx="4" fill="#f2e8d5"/>
+  <rect x="14" y="14" width="36" height="34" rx="4" fill="none" stroke="#c4a052" stroke-width="2"/>
+
+  <!-- Линии бумаги (витки) -->
+  <path d="M18 20 H46" stroke="#c4a052" stroke-width="1.2" opacity="0.5"/>
+  <path d="M18 26 H46" stroke="#c4a052" stroke-width="1.2" opacity="0.5"/>
+  <path d="M18 32 H46" stroke="#c4a052" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Верхний торец рулона (эллипс) -->
+  <ellipse cx="32" cy="14" rx="18" ry="4" fill="#e8dcc4" stroke="#c4a052" stroke-width="2"/>
+
+  <!-- Отверстие в центре торца -->
+  <ellipse cx="32" cy="14" rx="4" ry="1.5" fill="#141a20"/>
+
+  <!-- Отрывающийся лист бумаги справа -->
+  <path d="M50 30 Q56 30 56 36 L56 48 Q56 52 52 52 L50 52" 
+        fill="none" stroke="#c4a052" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Точка-акцент -->
+  <circle cx="52" cy="44" r="1.5" fill="#c4a052"/>
+</svg>
