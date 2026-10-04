@@ -1,1 +1,17 @@
-
+<!-- CelluMax C-3000: два яруса, синий -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" role="img" aria-label="Станок CelluMax C-3000">
+  <rect x="4" y="18" width="94" height="54" rx="4" fill="#5B9BD5" opacity="0.9"/>
+  <rect x="4" y="18" width="94" height="54" rx="4" fill="none" stroke="#3f76a8" stroke-width="2"/>
+  <rect x="10" y="24" width="82" height="3" rx="1.5" fill="#f2e8d5" opacity="0.5"/>
+  <rect x="10" y="30" width="82" height="3" rx="1.5" fill="#f2e8d5" opacity="0.3"/>
+  <circle cx="22" cy="48" r="9" fill="#141a20" stroke="#f2e8d5" stroke-width="1.5"/>
+  <circle cx="22" cy="48" r="3" fill="#f2e8d5"/>
+  <circle cx="48" cy="48" r="9" fill="#141a20" stroke="#f2e8d5" stroke-width="1.5"/>
+  <circle cx="48" cy="48" r="3" fill="#f2e8d5"/>
+  <circle cx="74" cy="48" r="9" fill="#141a20" stroke="#f2e8d5" stroke-width="1.5"/>
+  <circle cx="74" cy="48" r="3" fill="#f2e8d5"/>
+  <path d="M98 34 Q118 34 118 48 Q118 62 98 62" fill="none" stroke="#f2e8d5" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M98 38 Q112 38 112 48" fill="none" stroke="#f2e8d5" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <rect x="4" y="72" width="94" height="6" rx="2" fill="#3f76a8"/>
+  <circle cx="104" cy="16" r="3" fill="#8fb88f"/>
+</svg>
