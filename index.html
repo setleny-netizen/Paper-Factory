@@ -1,1 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#141a20">
+  <title>Бумажная фабрика</title>
 
+  <!-- Иконка вкладки -->
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="assets/app.css?v=1">
+
+  <!-- SDK Telegram (подключается первым) -->
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+
+  <!-- Скрипты игры -->
+  <script src="assets/ui.js?v=1" defer></script>
+  <script src="assets/loading.js?v=1" defer></script>
+  <script src="assets/app.js?v=1" defer></script>
+  <script src="assets/admin.js?v=1" defer></script>
+</head>
+
+<body class="is-loading">
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ЭКРАН ЗАГРУЗКИ                              -->
+  <!-- Показывается пока игра подключается к серверу -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="loader" class="loader" aria-label="Загрузка фабрики">
+    <div class="loader__brand">
+      <img src="assets/mark.svg" width="36" height="36" alt="">
+      <span>Бумажная<small>фабрика</small></span>
+    </div>
+
+    <div class="loader__content">
+      <h1 data-loading-title>Подключаем фабрику</h1>
+      <p data-loading-message>Загружаем профиль и готовим оборудование.</p>
+
+      <div class="loader__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <span></span>
+      </div>
+
+      <p class="loader__status" data-loading-status>Соединяемся с сервером</p>
+
+      <div class="loader__actions" data-loading-actions hidden>
+        <button type="button" class="button primary" data-loading-retry>Попробовать снова</button>
+        <a href="https://t.me/" data-loading-open>Открыть в Telegram</a>
+      </div>
+    </div>
+
+    <p class="loader__footer">Станки. Сырьё. Рулоны.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ОСНОВНОЙ КАРКАС                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- Шапка: логотип + баланс -->
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Бумажная фабрика">
+        <img src="assets/mark.svg" width="36" height="36" alt="">
+        <span>Бумажная<small>фабрика</small></span>
+      </a>
+
+      <!-- Баланс: рулоны. Заполняется из JS -->
+      <button class="wallet" id="wallet" aria-label="Баланс" disabled>
+        <span class="wallet__icon">🧻</span>
+        <b data-wallet-balance>—</b>
+      </button>
+    </header>
+
+    <!-- Сюда рендерится текущая вкладка -->
+    <main id="main" tabindex="-1">
+      <section class="boot">
+        <h1>Загрузка…</h1>
+        <p>Подключаемся к фабрике</p>
+      </section>
+    </main>
+
+    <!-- Нижняя навигация. Заполняется из JS -->
+    <nav class="navigation" id="navigation" aria-label="Разделы игры"></nav>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ДИАЛОГ (модальные окна)                     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <dialog id="dialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Закрыть">×</button>
+    </form>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- УВЕДОМЛЕНИЕ (toast)                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NOSCRIPT                                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <noscript>
+    <style>
+      .loader { display: none; }
+      body.is-loading { overflow: auto; }
+    </style>
+    <p>Включи JavaScript или открой игру в Telegram.</p>
+  </noscript>
+
+</body>
+</html>
