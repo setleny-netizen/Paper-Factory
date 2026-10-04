@@ -1,1 +1,20 @@
-
+<!-- Titan Paper TP-X: флагман, красный с золотом -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" role="img" aria-label="Станок Titan Paper TP-X">
+  <rect x="0" y="12" width="104" height="64" rx="6" fill="#E85D5D" opacity="0.95"/>
+  <rect x="0" y="12" width="104" height="64" rx="6" fill="none" stroke="#c4a052" stroke-width="2"/>
+  <rect x="6" y="18" width="92" height="3" rx="1.5" fill="#c4a052" opacity="0.6"/>
+  <rect x="6" y="24" width="92" height="3" rx="1.5" fill="#f2e8d5" opacity="0.4"/>
+  <rect x="6" y="30" width="92" height="3" rx="1.5" fill="#f2e8d5" opacity="0.2"/>
+  <circle cx="18" cy="50" r="9" fill="#141a20" stroke="#c4a052" stroke-width="1.5"/>
+  <circle cx="18" cy="50" r="3" fill="#c4a052"/>
+  <circle cx="42" cy="50" r="9" fill="#141a20" stroke="#c4a052" stroke-width="1.5"/>
+  <circle cx="42" cy="50" r="3" fill="#c4a052"/>
+  <circle cx="66" cy="50" r="9" fill="#141a20" stroke="#c4a052" stroke-width="1.5"/>
+  <circle cx="66" cy="50" r="3" fill="#c4a052"/>
+  <circle cx="88" cy="50" r="6" fill="#141a20" stroke="#c4a052" stroke-width="1.5"/>
+  <circle cx="88" cy="50" r="2" fill="#c4a052"/>
+  <path d="M106 28 Q126 28 126 50 Q126 72 106 72" fill="none" stroke="#c4a052" stroke-width="3" stroke-linecap="round"/>
+  <rect x="0" y="76" width="104" height="6" rx="2" fill="#a83a3a"/>
+  <circle cx="112" cy="14" r="3" fill="#c4a052"/>
+  <circle cx="112" cy="22" r="3" fill="#8fb88f"/>
+</svg>
