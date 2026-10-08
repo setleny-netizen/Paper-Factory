@@ -1,115 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#141a20">
-  <title>Бумажная фабрика</title>
-
-  <!-- Иконка вкладки -->
-  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
-
-  <!-- Стили -->
-  <link rel="stylesheet" href="assets/app.css?v=1">
-
-  <!-- SDK Telegram (подключается первым) -->
-  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
-
-  <!-- Скрипты игры -->
-  <script src="assets/ui.js?v=1" defer></script>
-  <script src="assets/loading.js?v=1" defer></script>
-  <script src="assets/app.js?v=1" defer></script>
-  <script src="assets/admin.js?v=1" defer></script>
-</head>
-
-<body class="is-loading">
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- ЭКРАН ЗАГРУЗКИ                              -->
-  <!-- Показывается пока игра подключается к серверу -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section id="loader" class="loader" aria-label="Загрузка фабрики">
-    <div class="loader__brand">
-      <img src="assets/mark.svg" width="36" height="36" alt="">
-      <span>Бумажная<small>фабрика</small></span>
-    </div>
-
-    <div class="loader__content">
-      <h1 data-loading-title>Подключаем фабрику</h1>
-      <p data-loading-message>Загружаем профиль и готовим оборудование.</p>
-
-      <div class="loader__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <span></span>
-      </div>
-
-      <p class="loader__status" data-loading-status>Соединяемся с сервером</p>
-
-      <div class="loader__actions" data-loading-actions hidden>
-        <button type="button" class="button primary" data-loading-retry>Попробовать снова</button>
-        <a href="https://t.me/" data-loading-open>Открыть в Telegram</a>
-      </div>
-    </div>
-
-    <p class="loader__footer">Станки. Сырьё. Рулоны.</p>
-  </section>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- ОСНОВНОЙ КАРКАС                             -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="app-shell">
-
-    <!-- Шапка: логотип + баланс -->
-    <header class="topbar">
-      <a class="brand" href="./" aria-label="Бумажная фабрика">
-        <img src="assets/mark.svg" width="36" height="36" alt="">
-        <span>Бумажная<small>фабрика</small></span>
-      </a>
-
-      <!-- Баланс: рулоны. Заполняется из JS -->
-      <button class="wallet" id="wallet" aria-label="Баланс" disabled>
-        <span class="wallet__icon">🧻</span>
-        <b data-wallet-balance>—</b>
-      </button>
-    </header>
-
-    <!-- Сюда рендерится текущая вкладка -->
-    <main id="main" tabindex="-1">
-      <section class="boot">
-        <h1>Загрузка…</h1>
-        <p>Подключаемся к фабрике</p>
-      </section>
-    </main>
-
-    <!-- Нижняя навигация. Заполняется из JS -->
-    <nav class="navigation" id="navigation" aria-label="Разделы игры"></nav>
-
-  </div>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- ДИАЛОГ (модальные окна)                     -->
-  <!-- ═══════════════════════════════════════════ -->
-  <dialog id="dialog">
-    <form method="dialog">
-      <button class="dialog-close" aria-label="Закрыть">×</button>
-    </form>
-    <div id="dialog-content"></div>
-  </dialog>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- УВЕДОМЛЕНИЕ (toast)                         -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- NOSCRIPT                                    -->
-  <!-- ═══════════════════════════════════════════ -->
-  <noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скоро...</title>
     <style>
-      .loader { display: none; }
-      body.is-loading { overflow: auto; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            /* Зимний градиентный фон */
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #ffffff;
+        }
+
+        /* Контейнер для видео */
+        .video-container {
+            margin-bottom: 25px;
+            animation: float 3s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Стили для видео */
+        .video-container video {
+            max-width: 85vw;
+            max-height: 55vh; /* Чтобы видео не перекрывало прогресс-бар */
+            object-fit: contain;
+            /* Тень для объема (если видео с прозрачным фоном, тень будет красиво облегать объект) */
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+        }
+
+        /* Легкая анимация парения для видео */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Стили для текста "Скоро..." */
+        .title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 0, 0, 0.5);
+            color: #fff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Контейнер для прогресс-бара */
+        .progress-container {
+            width: 60%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        /* Сам прогресс-бар */
+        .progress-bar {
+            height: 30px;
+            width: 0%;
+            background: linear-gradient(90deg, #ff416c 0%, #ff4b2b 100%);
+            border-radius: 50px;
+            transition: width 0.2s ease-out;
+            box-shadow: 0 0 15px rgba(255, 65, 108, 0.8);
+        }
+
+        /* Текст с процентами */
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            color: #fff;
+        }
     </style>
-    <p>Включи JavaScript или открой игру в Telegram.</p>
-  </noscript>
+</head>
+<body>
+
+    <div class="title">Скоро...</div>
+
+    <div class="video-container">
+        <!-- 
+            Атрибуты:
+            autoplay - запускает видео сразу
+            loop - зацикливает видео
+            muted - ОБЯЗАТЕЛЬНО для автовоспроизведения
+            playsinline - нужно для корректной работы на iPhone
+        -->
+        <video autoplay loop muted playsinline>
+            <!-- Имя вашего файла -->
+            <source src="aiclip_6acae73a8ebc4ca2afea7267641d26d4.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-text" id="progressText">0%</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            let progress = 0;
+
+            const updateProgress = () => {
+                // Случайный шаг от 1 до 5, чтобы загрузка выглядела живой
+                const randomStep = Math.floor(Math.random() * 5) + 1;
+                progress += randomStep;
+
+                // Останавливаемся на 80%
+                if (progress >= 80) {
+                    progress = 80;
+                    clearInterval(intervalId); // Останавливаем таймер
+                    
+                    // Визуально показываем "зависание"
+                    progressText.style.color = '#ff4b2b';
+                    progressText.innerText = '80% (Завис...)';
+                    return;
+                }
+
+                progressBar.style.width = progress + '%';
+                progressText.innerText = progress + '%';
+            };
+
+            // Запускаем обновление каждые 250 миллисекунд
+            const intervalId = setInterval(updateProgress, 250);
+        });
+    </script>
 
 </body>
 </html>
