@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #050914; /* Очень темный синий, как на референсе */
+            background-color: #050914; /* Очень темный синий */
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -43,7 +43,7 @@
             font-size: 1.2rem;
             opacity: 0.6;
             animation: fall linear infinite;
-            text-shadow: 0 0 8px rgba(0, 200, 255, 0.8); /* Голубое свечение снежинок */
+            text-shadow: 0 0 8px rgba(0, 200, 255, 0.8);
         }
 
         .snowflake:nth-child(1) { left: 10%; animation-duration: 6s; font-size: 1rem; animation-delay: 0s; }
@@ -122,7 +122,7 @@
             align-items: flex-end;
             font-size: 0.85rem;
             letter-spacing: 2px;
-            color: #4da6ff; /* Голубой цвет текста */
+            color: #4da6ff;
             text-transform: uppercase;
             font-weight: 600;
         }
@@ -138,7 +138,7 @@
         .progress-container {
             width: 100%;
             height: 24px;
-            border: 2px solid #00ccff; /* Голубая обводка */
+            border: 2px solid #00ccff;
             border-radius: 50px;
             padding: 3px;
             background-color: transparent;
@@ -147,12 +147,11 @@
             overflow: hidden;
         }
 
-        /* Внутренняя полоса загрузки (создаем эффект полосок) */
+        /* Внутренняя полоса загрузки (эффект полосок) */
         .progress-bar {
             height: 100%;
             width: 0%;
             border-radius: 50px;
-            /* Диагональные полоски */
             background: repeating-linear-gradient(
                 45deg,
                 #00ccff,
@@ -163,19 +162,18 @@
             background-size: 200% 100%;
             transition: width 0.3s ease-out;
             box-shadow: 0 0 20px rgba(0, 204, 255, 0.8);
-            /* Анимация движения полосок */
             animation: moveStripes 1s linear infinite;
         }
 
         /* Анимация движения полосок внутри бара */
         @keyframes moveStripes {
             0% { background-position: 0 0; }
-            100% { background-position: 32px 0; } /* Сдвиг на длину одной полоски */
+            100% { background-position: 32px 0; }
         }
 
         /* Эффект "зависания" — свечение пульсирует, полоски замирают */
         .progress-bar.frozen {
-            animation: none; /* Останавливаем движение полосок */
+            animation: none;
             box-shadow: 0 0 30px rgba(0, 204, 255, 0.9), 0 0 60px rgba(0, 204, 255, 0.5);
         }
 
@@ -203,7 +201,7 @@
 
         <div class="image-container">
             <!-- ВАША КАРТИНКА -->
-            <img src="f7b7542f-4a61-4b70-9434-8b62b9e2b025.png" alt="Санта с елкой">
+            <img src="b502f50c-cfbf-4b24-aad2-f2f5a8ce0649.png" alt="Санта с елкой">
         </div>
 
         <!-- ПРОГРЕСС-БАР -->
@@ -227,25 +225,20 @@
             let progress = 0;
 
             const updateProgress = () => {
-                // Случайный шаг, чтобы анимация была живой
                 const randomStep = Math.floor(Math.random() * 4) + 1;
                 progress += randomStep;
 
                 // Если дошли до 80%
                 if (progress >= 80) {
                     progress = 80;
-                    clearInterval(intervalId); // Останавливаем загрузку
+                    clearInterval(intervalId);
                     
-                    // Обновляем финальные значения
                     progressPercent.innerText = '80%';
                     progressBar.style.width = '80%';
-                    
-                    // Добавляем класс "frozen" для красивого эффекта зависания
-                    progressBar.classList.add('frozen');
+                    progressBar.classList.add('frozen'); // Замирание с красивым свечением
                     return;
                 }
 
-                // Обновляем визуальную часть
                 progressBar.style.width = progress + '%';
                 progressPercent.innerText = progress + '%';
             };
